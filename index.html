@@ -1,0 +1,1214 @@
+<html lang="en" __gchrome_remoteframetoken="71d462ada6f8cb2d394c76bfcdd16949"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","","c1305148c0ce-tic_tac_toe_critical_fix.html-339")</script><script>'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){const d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);const c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{let a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){const b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{const c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){const c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{const c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){const c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);const e=yield c.blob();return new Promise((f,g)=>{const k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){let c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){const c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());let e;try{const f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){const b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");const c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;let c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){const c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{let g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){const g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){const b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{const e=d?(new URL(b,d||void 0)).toString():b;let f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){const [c,,e]=ia.exec(d)||[],f=c,g=e;if(!g)return"";if(g===b)return`src: ${f};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;const c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c;const e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){const d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){const d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){let d=a.cssText;const c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){let g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];const b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){const d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){const g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}const d=new Set;b(a);return d}function ua(a,b){return t(function*(){const d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){const d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){const c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){const {width:d,height:c}=A(a,b);var e=yield wa(a,b);e=yield B(e);const f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=
+16384));f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;const c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){const a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){let b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){const b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Batman Tic Tac Toe: Critical Fix Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000000;
+    --panel:#0b0b0b;
+    --accent:#ffd200;
+    --muted:#9a9a9a;
+    --neon:#ffd200;
+    --neon-glow: rgba(255, 210, 0, 0.4);
+    --border-color: rgba(255, 255, 255, 0.05);
+    --win-white: #e0f7ff; /* Icy Blue-White for X */
+    --win-yellow: var(--accent);
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  /* --- Keyframes for Animation --- */
+  @keyframes pulse-yellow {
+    0%, 100% { box-shadow: 0 0 10px 2px var(--neon-glow), inset 0 0 10px rgba(255, 210, 0, 0.3); }
+    50% { box-shadow: 0 0 25px 5px var(--neon), inset 0 0 20px rgba(255, 210, 0, 0.5); }
+  }
+  @keyframes pulse-white {
+    0%, 100% { 
+        box-shadow: 0 0 12px 3px rgba(180, 230, 255, 0.4), inset 0 0 10px rgba(224, 247, 255, 0.2); 
+    }
+    50% { 
+        box-shadow: 0 0 35px 8px #e0f7ff, inset 0 0 25px rgba(224, 247, 255, 0.5); 
+    }
+  }
+  @keyframes blink-x {
+    0%, 100% { background: #0d0d0d; border-color: var(--win-white); }
+    50% { background: var(--win-white); border-color: var(--win-white); }
+  }
+  @keyframes blink-o {
+    0%, 100% { background: #0d0d0d; border-color: var(--win-yellow); }
+    50% { background: var(--win-yellow); border-color: var(--win-yellow); }
+  }
+
+
+  /* --- Base & Structure (CRITICAL SCROLL FIX) --- */
+  html,body{
+      margin:0;
+      padding: 0;
+      height: 100%; /* Force full height */
+      min-height: 100%; 
+      background:linear-gradient(180deg,#000 0%, #050505 100%);
+      color:#eee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-y: hidden; /* Prevent body scroll, force scroll on .wrap */
+  }
+  .wrap{
+      max-width:1040px;
+      margin: 0 auto; /* Centers the content */
+      padding: 16px; 
+      box-sizing: border-box;
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:16px;
+      align-items:start;
+      /* WRAP is now the primary scrollable area */
+      height: 100%; 
+      overflow-y: auto; /* Use auto for necessary scrolling */
+  }
+  
+  header{grid-column:1/-1;display:flex;gap:12px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--border-color);}
+  .logo{display:flex;align-items:center;gap:12px}
+  .bat-svg{width:56px;height:56px;flex:0 0 56px;filter:drop-shadow(0 0 8px var(--neon-glow));}
+  .title{color:var(--accent);font-weight:800;font-size:20px;letter-spacing:-0.5px}
+  
+  /* --- DEVELOPER PROMINENCE --- */
+  .developer-name {
+      color: #fff;
+      font-size: 16px; 
+      font-weight: 800;
+      margin-top: 4px;
+      margin-bottom: 2px;
+  }
+  .subtitle{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:0;
+  }
+  
+  .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:16px;border:1px solid var(--border-color);box-shadow: 0 4px 15px rgba(0,0,0,0.2);}
+
+  /* --- Sidebar / Controls --- */
+  .sidebar{display:flex;flex-direction:column;gap:16px}
+  .scoreboard{padding:10px;border-radius:10px;background:var(--panel)}
+  .score-header{font-weight:800;color:var(--accent);font-size:14px;margin-bottom:4px}
+  .score-sub{color:var(--muted);font-size:12px;margin-bottom:8px}
+  .score-grid{display:flex;gap:8px;margin-top:6px}
+  .stat{flex:1;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;text-align:center}
+  .stat .num{font-size:22px;font-weight:900;color:#fff}
+  .stat .label{font-size:12px;color:var(--muted);margin-top:6px}
+  .stars{display:flex;gap:6px;align-items:center;margin-top:10px}
+  .star{font-size:18px;color:var(--accent)}
+  .controls{display:flex;flex-direction:column;gap:12px}
+  .control-group{display:flex;flex-direction:column;gap:6px}
+  .btn-group{display:flex;gap:8px}
+  .btn{background:var(--panel);border:2px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:8px;color:var(--accent);cursor:pointer;font-weight:700;flex-grow:1;transition:all 0.15s ease}
+  .btn:hover{background:rgba(255,255,255,0.05);}
+  .btn.active{background:var(--accent);color:#111;border-color:var(--accent);box-shadow:0 0 8px rgba(255,210,0,0.4)}
+  .btn.secondary{color:#bbb;border-color:rgba(255,255,255,0.03)}
+  .mode-label{font-size:12px;color:var(--muted);margin-bottom:2px}
+  
+  /* --- Main Board Area --- */
+  .main{display:flex;flex-direction:column;gap:16px;align-items:center}
+  .game-info{display:flex;justify-content:space-between;align-items:center;width:100%}
+  .game-title{font-size:18px;color:var(--accent);font-weight:800}
+  .turn{font-size:14px;color:var(--muted)}
+  
+  .board-container{
+      position: relative;
+      width: clamp(280px, 90vw, 420px);
+      height: clamp(280px, 90vw, 420px);
+      perspective: 1100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .board{
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: transparent;
+      transform-style: preserve-3d;
+      transition: transform 400ms ease;
+      border: 4px solid var(--neon);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 25px var(--neon-glow);
+  }
+  
+  .cell{
+      background: linear-gradient(180deg,#070707,#0b0b0b);
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      color:#ddd;
+      cursor:pointer;
+      user-select:none;
+      position:relative;
+      border-right:4px solid var(--neon);
+      border-bottom:4px solid var(--neon);
+      box-sizing:border-box;
+      transition: all 0.2s ease-out, box-shadow 0.3s ease;
+      overflow: hidden; 
+  }
+  .cell:hover:not(.marked):not(.winning-cell){ background-color: #1a1a1a; }
+  
+  /* remove borders */
+  .cell:nth-child(3n) { border-right: 0; }
+  .cell:nth-child(n+7) { border-bottom: 0; }
+  
+  /* inner shadow for depth */
+  .cell::after{content:"";position:absolute;inset:0;box-shadow:inset 0 6px 18px rgba(0,0,0,0.6);pointer-events:none}
+  .cell:active{transform:scale(0.98)}
+  .cell.marked{cursor:default;}
+  
+  /* --- Cell Marks --- */
+  .mark-x, .mark-o {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5); 
+      transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 220ms ease;
+      opacity: 0;
+      line-height: 1; 
+  }
+
+  .mark-x {
+      color:#cfcfcf;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+      font-size: clamp(50px, 18vmin, 80px); 
+      font-weight: 900;
+  }
+  
+  .mark-o {
+      width: clamp(50px, 16vmin, 70px); 
+      height: clamp(50px, 16vmin, 70px); 
+      border-radius: 50%;
+      border: 8px solid var(--neon);
+      box-shadow: 0 0 10px var(--neon-glow);
+  }
+  
+  .cell.marked .mark-x,
+  .cell.marked .mark-o {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /* --- Winning Cell Styles --- */
+  .cell.winning-cell {
+      z-index: 50; 
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+      transform: scale(1.02); 
+  }
+  
+  /* Player X (Icy) Win Style */
+  .cell.winning-cell[data-mark="X"] {
+      border: 4px solid var(--win-white); 
+      animation: blink-x 0.5s step-end infinite; 
+      background: #0d0d0d; 
+  }
+  
+  .cell.winning-cell[data-mark="X"] .mark-x {
+      color: var(--win-white);
+      text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 5px rgba(255, 255, 255, 0.8); 
+      animation: pulse-white 1.5s infinite alternate; 
+      transform: translate(-50%, -50%) scale(1.15); 
+  }
+
+  /* Player O (Neon) Win Style */
+  .cell.winning-cell[data-mark="O"] {
+      border: 4px solid var(--win-yellow); 
+      animation: blink-o 0.5s step-end infinite; 
+      background: #0d0d0d; 
+  }
+  
+  .cell.winning-cell[data-mark="O"] .mark-o {
+      border-color: var(--win-yellow);
+      box-shadow: 0 0 20px 2px var(--neon);
+      animation: pulse-yellow 1.5s infinite alternate; 
+      transform: translate(-50%, -50%) scale(1.1); 
+  }
+
+  /* --- Overlays & Modals --- */
+  .bat-overlay{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity 240ms ease;background:rgba(0,0,0,0.6);z-index:100}
+  .bat-overlay.show{opacity:1;pointer-events:auto}
+  .bat-beam{width:80vmin;height:80vmin;border-radius:50%;background:radial-gradient(circle at 50% 32%, rgba(255,210,0,0.18), rgba(255,210,0,0.04) 38%, rgba(0,0,0,0.0) 52%);display:flex;align-items:center;justify-content:center}
+  .bat-win{width:28vmin;height:28vmin;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.6))}
+
+  #modal{background:var(--panel);padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.5);border:1px solid var(--border-color);max-width:300px;text-align:center;pointer-events:auto}
+  #modalTitle{font-size:20px;color:var(--accent);margin-bottom:8px}
+  #modalText{font-size:14px;color:#ccc;margin-bottom:20px}
+  
+  /* --- Responsive --- */
+  @media (max-width:900px){
+    .wrap{
+        grid-template-columns:1fr;
+        padding:12px; 
+        max-height: 100vh; /* Critical: Ensure the scrollable wrap does not exceed viewport height */
+        padding-bottom: 40px; /* Ensures space above the bottom bar */
+    }
+    .board-container{order:2; margin-top: 10px;}
+    .sidebar{order:1;flex-direction:column;gap:12px}
+    .game-info{padding-top:10px}
+    .stat{padding:8px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo" aria-hidden="true">
+      <svg class="bat-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#ffd200" d="M256 96c-58 0-90 30-128 48-37 18-48 6-48 6s26 20 40 36c14 16 12 34 12 34s-8-2-14 0c-6 2-22 12-22 12s30 8 48 18c18 10 24 26 24 26s-26-6-44 0c-18 6-44 18-44 18s58 0 88 22c30 22 56 34 56 34s18-36 44-36 44 36 44 36 26-12 56-34 88-22 88-22-26-12-44-18c-18-6-44 0-44 0s6-16 24-26c18-10 48-18 48-18s-16-10-22-12c-6-2-14 0-14 0s-2-18 12-34c14-16 40-36 40-36s-11 12-48-6C346 126 314 96 256 96z"></path>
+      </svg>
+    </div>
+    <div>
+      <div class="title">Batman Tic Tac Toe: Critical Fix Edition</div>
+      <div class="developer-name">By Hamza Ahmed Tahir</div>
+      <div class="subtitle">Local Multiplayer &amp; Adaptive AI.</div>
+    </div>
+  </header>
+
+  <aside class="sidebar panel">
+    <div class="scoreboard">
+      <div class="score-header">🦇 Gotham Scoreboard (Local Session)</div>
+      <div class="score-sub">Scores persist until reset or browser data is cleared.</div>
+      <div class="score-grid" role="list">
+        <div class="stat" role="listitem"><div class="num" id="wins">0</div><div class="label">Wins</div></div>
+        <div class="stat" role="listitem"><div class="num" id="losses">0</div><div class="label">Losses</div></div>
+        <div class="stat" role="listitem"><div class="num" id="draws">0</div><div class="label">Draws</div></div>
+      </div>
+      <div class="stars" aria-hidden="true"><div style="font-size:12px;color:var(--muted);margin-right:6px">Stars:</div><div id="starsContainer"></div></div>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <div class="mode-label">Play Mode</div>
+        <div class="btn-group">
+          <button class="btn active" id="vsAiBtn">vs AI</button>
+          <button class="btn" id="vsPlayerBtn">vs Player</button>
+        </div>
+      </div>
+      
+      <!-- AI DIFFICULTY BUTTONS -->
+      <div class="control-group" id="aiDifficultyContainer">
+        <div class="mode-label">AI Difficulty</div>
+        <div class="btn-group triple">
+          <button class="btn secondary" data-difficulty="easy">Easy</button>
+          <button class="btn active" data-difficulty="adaptive">Adaptive</button>
+          <button class="btn secondary" data-difficulty="hard">Hard</button>
+        </div>
+      </div>
+       <div class="control-group">
+        <div class="mode-label">Game Controls</div>
+        <div class="btn-group">
+          <button class="btn active" id="newGameBtn">New Round</button>
+          <button class="btn secondary" id="resetBtn">Reset Scores</button>
+        </div>
+      </div>
+       <div class="control-group">
+        <div class="mode-label">Actions</div>
+        <div class="btn-group">
+          <button class="btn secondary" id="undoBtn">Undo</button>
+          <button class="btn secondary" id="flipBtn">Flip View</button>
+        </div>
+        <button class="btn secondary" id="downloadBtn" style="margin-top: 8px;">Download Game</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main panel" role="main">
+    <div class="game-info">
+      <div class="game-title">The Bat-Grid</div>
+      <div class="turn" id="turnInfo" role="status" aria-live="polite">Turn: <strong>Your Turn (X)</strong> (AI: Adaptive)</div>
+    </div>
+
+    <div class="board-container" role="application" aria-label="Tic Tac Toe board area">
+      <div class="board" id="board" role="grid" aria-label="Tic Tac Toe grid"><div class="cell" data-idx="0" data-mark="" role="button" aria-label="Cell 1" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="1" data-mark="" role="button" aria-label="Cell 2" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="2" data-mark="" role="button" aria-label="Cell 3" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="3" data-mark="" role="button" aria-label="Cell 4" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="4" data-mark="" role="button" aria-label="Cell 5" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="5" data-mark="" role="button" aria-label="Cell 6" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="6" data-mark="" role="button" aria-label="Cell 7" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="7" data-mark="" role="button" aria-label="Cell 8" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div><div class="cell" data-idx="8" data-mark="" role="button" aria-label="Cell 9" style="touch-action: manipulation; transform: scale(1); border-color: var(--neon); animation: auto ease 0s 1 normal none running none;"><div class="mark-x" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;">X</div><div class="mark-o" style="transform: translate(-50%, -50%) scale(1); animation: auto ease 0s 1 normal none running none; opacity: 0;"></div></div></div>
+    </div>
+    
+  </main>
+</div>
+
+<div class="bat-overlay" id="batOverlay" aria-hidden="true">
+  <div class="bat-beam">
+    <svg class="bat-win" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#ffd200" d="M256 96c-58 0-90 30-128 48-37 18-48 6-48 6s26 20 40 36c14 16 12 34 12 34s-8-2-14 0c-6 2-22 12-22 12s30 8 48 18c18 10 24 26 24 26s-26-6-44 0c-18 6-44 18-44 18s58 0 88 22c30 22 56 34 56 34s18-36 44-36 44 36 44 36 26-12 56-34 88-22 88-22-26-12-44-18c-18-6-44 0-44 0s6-16 24-26c18-10 48-18 48-18s-16-10-22-12c-6-2-14 0-14 0s-2-18 12-34c14-16 40-36 40-36s-11 12-48-6C346 126 314 96 256 96z"></path>
+    </svg>
+  </div>
+</div>
+
+<div class="bat-overlay" id="modalOverlay" style="display: none; pointer-events: auto;">
+    <div id="modal">
+        <h2 id="modalTitle">Reset Scores?</h2>
+        <p id="modalText">This will reset your wins, losses, and draws permanently. Are you sure?</p>
+        <div class="btn-group">
+            <button class="btn secondary" id="modalCancel">Cancel</button>
+            <button class="btn active" id="modalConfirm">Confirm Reset</button>
+        </div>
+    </div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const PLAYER = 'X', AI = 'O';
+  const SCORES_KEY = 'batman_ttt_critical_v1_scores'; 
+  const DIFF_KEY = 'batman_ttt_critical_v1_difficulty'; 
+  const HIST_KEY = 'batman_ttt_hist_critical_v1';
+  const WINNING_LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+  let state = {
+    mode: 'ai',
+    difficulty: 'adaptive',
+    boardState: Array(9).fill(''),
+    currentPlayer: PLAYER,
+    scores: {wins:0, losses:0, draws:0, stars:0, streak:0},
+    moveHistory: [],
+    isGameOver: false
+  };
+
+  const ui = {
+    board: document.getElementById('board'),
+    wins: document.getElementById('wins'),
+    losses: document.getElementById('losses'),
+    draws: document.getElementById('draws'),
+    starsContainer: document.getElementById('starsContainer'),
+    currentTurn: document.getElementById('currentTurn'),
+    turnInfo: document.getElementById('turnInfo'),
+    batOverlay: document.getElementById('batOverlay'),
+    vsAiBtn: document.getElementById('vsAiBtn'),
+    vsPlayerBtn: document.getElementById('vsPlayerBtn'),
+    newGameBtn: document.getElementById('newGameBtn'),
+    resetBtn: document.getElementById('resetBtn'),
+    undoBtn: document.getElementById('undoBtn'),
+    flipBtn: document.getElementById('flipBtn'),
+    downloadBtn: document.getElementById('downloadBtn'), 
+    modalOverlay: document.getElementById('modalOverlay'),
+    modalConfirm: document.getElementById('modalConfirm'),
+    modalCancel: document.getElementById('modalCancel'),
+    difficultyBtns: document.querySelectorAll('#aiDifficultyContainer .btn'),
+  };
+  
+  // --- Persistence & State ---
+  function loadScores(){ 
+    try{ 
+        const raw = localStorage.getItem(SCORES_KEY); 
+        if(raw) state.scores = JSON.parse(raw);
+    }catch(e){console.error("Could not load scores:", e);} 
+    updateScoreUI(); 
+  }
+  
+  function loadDifficulty() {
+    try {
+        const storedDiff = localStorage.getItem(DIFF_KEY);
+        if (storedDiff) state.difficulty = storedDiff;
+    } catch(e) { console.error("Could not load difficulty:", e); }
+    
+    // Set active button in UI
+    ui.difficultyBtns.forEach(btn => {
+        const isActive = btn.dataset.difficulty === state.difficulty;
+        btn.classList.toggle('active', isActive);
+        btn.classList.toggle('secondary', !isActive);
+    });
+  }
+
+  function saveScores(){ 
+    try{ 
+        localStorage.setItem(SCORES_KEY, JSON.stringify(state.scores));
+    }catch(e){console.error("Could not save scores:", e);} 
+  }
+
+  function getHist(){ try{ const r = sessionStorage.getItem(HIST_KEY); return r?JSON.parse(r):[] }catch(e){return []} }
+  function pushHist(idx){ const h = getHist(); h.push(idx); if(h.length>40) h.shift(); sessionStorage.setItem(HIST_KEY, JSON.stringify(h)); }
+
+  // --- UI Updates ---
+  function updateScoreUI(){
+    ui.wins.textContent = state.scores.wins;
+    ui.losses.textContent = state.scores.losses;
+    ui.draws.textContent = state.scores.draws;
+    
+    ui.starsContainer.innerHTML = ''; 
+    for(let i=0;i<state.scores.stars;i++){ 
+        const d=document.createElement('div'); 
+        d.className='star'; d.textContent='★'; 
+        ui.starsContainer.appendChild(d); 
+    }
+  }
+
+  function renderBoard(){
+    for(let i=0;i<9;i++){
+      const cell = ui.board.children[i];
+      const markX = cell.querySelector('.mark-x');
+      const markO = cell.querySelector('.mark-o');
+      
+      // --- Reset Styles for New Round ---
+      cell.classList.remove('winning-cell');
+      cell.style.zIndex = '';
+      cell.style.transform = 'scale(1)';
+      cell.style.borderColor = 'var(--neon)';
+      cell.style.animation = 'none'; // Clear cell animation
+      if (markX) markX.style.transform = 'translate(-50%, -50%) scale(1)';
+      if (markO) markO.style.transform = 'translate(-50%, -50%) scale(1)';
+      if (markX) markX.style.animation = 'none'; // Clear mark animation
+      if (markO) markO.style.animation = 'none'; // Clear mark animation
+      
+      if(state.boardState[i]==='X'){
+        if (markX) markX.style.opacity = '1'; 
+        if (markO) markO.style.opacity = '0';
+        cell.classList.add('marked');
+        cell.dataset.mark = 'X'; 
+      } else if(state.boardState[i]==='O'){
+        if (markO) markO.style.opacity = '1';
+        if (markX) markX.style.opacity = '0';
+        cell.classList.add('marked');
+        cell.dataset.mark = 'O'; 
+      } else {
+        if (markX) markX.style.opacity = '0'; 
+        if (markO) markO.style.opacity = '0'; 
+        cell.classList.remove('marked');
+        cell.dataset.mark = ''; 
+      }
+    }
+  }
+
+  function updateTurnUI(message = null){ 
+      if (message) {
+          ui.turnInfo.innerHTML = `<strong>${message}</strong>`;
+      } else {
+          const difficultyText = state.mode === 'ai' ? ` (AI: ${state.difficulty.charAt(0).toUpperCase() + state.difficulty.slice(1)})` : '';
+          const turnText = state.mode === 'ai'
+              ? (state.currentPlayer === PLAYER ? 'Your Turn (X)' : "Gotham's Turn (O)")
+              : `Player ${state.currentPlayer}'s Turn`;
+          ui.turnInfo.innerHTML = `Turn: <strong>${turnText}</strong>${difficultyText}`;
+      }
+  }
+
+  // --- Game Mechanics ---
+
+  function createBoard(){
+    ui.board.innerHTML='';
+    for(let i=0;i<9;i++){
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.idx = i;
+      cell.dataset.mark = ''; 
+      cell.setAttribute('role','button');
+      cell.setAttribute('aria-label','Cell '+(i+1));
+      cell.addEventListener('click', ()=> onCellClick(i), {passive:false});
+      cell.style.touchAction = 'manipulation';
+      
+      const mx = document.createElement('div'); mx.className='mark-x'; mx.textContent='X';
+      const mo = document.createElement('div'); mo.className='mark-o'; mo.textContent='';
+      
+      cell.appendChild(mx); cell.appendChild(mo);
+      ui.board.appendChild(cell);
+    }
+  }
+  
+  function makeMove(idx, player){
+    state.boardState[idx] = player;
+    state.moveHistory.push(idx);
+    ui.board.children[idx].dataset.mark = player; 
+    renderBoard();
+  }
+
+  function checkWinner(b){
+    for(const l of WINNING_LINES){
+      const [a,b1,c] = l;
+      if(b[a] && b[a]===b[b1] && b[a]===b[c]) return {player:b[a], line:l};
+    }
+    if(b.every(Boolean)) return {player:'draw'};
+    return null;
+  }
+  
+  function checkGameEnd(){
+    const res = checkWinner(state.boardState);
+    if(res){
+      state.isGameOver = true;
+      if(res.player==='draw'){
+        state.scores.draws++; state.scores.streak=0; saveScores(); updateScoreUI(); showResult("It's a Draw!", null);
+      } else {
+        const winner = res.player;
+        const playerWon = (winner===PLAYER);
+        
+        let message;
+        if (state.mode === 'ai') {
+            message = playerWon ? 'You Win!' : 'Gotham Wins!';
+        } else {
+            message = `Player ${winner} Wins!`;
+        }
+        
+        if(playerWon) {
+            state.scores.wins++; 
+            state.scores.streak = state.scores.streak < 0 ? 1 : state.scores.streak + 1;
+            awardStarsOnStreak();
+            ui.batOverlay.classList.add('show');
+        } else {
+            state.scores.losses++; 
+            state.scores.streak = 0; 
+        }
+        
+        saveScores(); updateScoreUI(); 
+        
+        highlightWinningCells(res.line); 
+        
+        showResult(message, res.line);
+      }
+      return true;
+    }
+    return false;
+  }
+
+  function awardStarsOnStreak(){
+    if(state.scores.streak===3) state.scores.stars +=1;
+    if(state.scores.streak>=5) state.scores.stars +=1; 
+  }
+  
+  function highlightWinningCells(line) {
+    line.forEach(index => {
+      const cell = ui.board.children[index];
+      const mark = cell.querySelector('.mark-x') || cell.querySelector('.mark-o');
+      
+      cell.classList.add('winning-cell');
+      cell.style.zIndex = '51'; 
+      // Re-apply the mark animation directly to the mark element for the glow effect
+      if (cell.dataset.mark === 'X' && mark) {
+          mark.style.animation = 'pulse-white 1.5s infinite alternate';
+      } else if (cell.dataset.mark === 'O' && mark) {
+          mark.style.animation = 'pulse-yellow 1.5s infinite alternate';
+      }
+    });
+  }
+
+  function showResult(text, winningLine){
+    updateTurnUI(text);
+    
+    const timeoutDuration = 2200; 
+
+    setTimeout(()=> { 
+        ui.batOverlay.classList.remove('show');
+        newRound(); 
+    }, timeoutDuration);
+  }
+
+  function newRound(){ 
+    state.boardState.fill(''); 
+    state.moveHistory = []; 
+    state.currentPlayer = PLAYER; 
+    state.isGameOver = false;
+    renderBoard(); 
+    updateTurnUI(); 
+  }
+
+  function onCellClick(idx){
+    if(state.boardState[idx] || state.isGameOver) return;
+    if(state.mode==='ai' && state.currentPlayer!==PLAYER) return;
+    
+    makeMove(idx, state.currentPlayer);
+    if(checkGameEnd()) return;
+    
+    state.currentPlayer = (state.currentPlayer===PLAYER)?AI:PLAYER;
+    updateTurnUI();
+    
+    if(state.mode==='ai' && state.currentPlayer===AI){
+      setTimeout(()=> aiMove(), 400); 
+    }
+  }
+  
+  // --- AI Logic ---
+  function aiMove(){
+    const emptyCount = state.boardState.filter(v=>!v).length;
+    let move = null;
+    let depth = 6; 
+    let minimaxChance = 0.72; 
+    
+    // --- Determine Strategy Based on Difficulty ---
+    switch(state.difficulty) {
+        case 'easy':
+            depth = 2; 
+            minimaxChance = 0.30; 
+            break;
+        case 'adaptive':
+            depth = 6; 
+            minimaxChance = 0.72; 
+            break;
+        case 'hard':
+            depth = 9; 
+            minimaxChance = 1.0; 
+            break;
+    }
+
+    if(emptyCount > 0){
+        
+        // Adaptive first move logic (Only used in 'adaptive' difficulty)
+        if(state.difficulty === 'adaptive' && emptyCount>=7){
+            const h = getHist();
+            if(h.length>4){
+                const counts = {}; for(const v of h){ counts[v] = (counts[v]||0)+1; }
+                const sorted = Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+                const common = parseInt(sorted[0]);
+                if(common===4){
+                    const corners = [0,2,6,8].filter(i=>!state.boardState[i]);
+                    if(corners.length) move = corners[Math.floor(Math.random()*corners.length)];
+                } else {
+                    if(!state.boardState[4]) move = 4;
+                }
+            }
+        }
+        
+        // Minimax or Random move
+        if(move===null){
+            if(Math.random() < minimaxChance){
+                const best = findBestMove(state.boardState, AI, depth);
+                if(best!==null) move = best;
+            }
+        }
+    }
+    
+    // Fallback/Random move if no optimal move was found or minimax was skipped
+    if(move===null){
+      const avail = state.boardState.map((v,i)=> v?null:i).filter(v=>v!==null);
+      if (avail.length > 0) move = avail[Math.floor(Math.random()*avail.length)];
+    }
+
+    // History update for adaptive mode
+    if(state.difficulty === 'adaptive'){
+        const playerMoves = state.boardState.map((v,i)=> v==='X'?i:null).filter(v=>v!==null);
+        if(playerMoves.length===1) pushHist(playerMoves[0]);
+    }
+    
+    if (move !== null) {
+      makeMove(move, AI);
+      if(checkGameEnd()) return;
+      state.currentPlayer = PLAYER; updateTurnUI();
+    }
+  }
+
+  function findBestMove(b, playerToMove, depthLimit){
+    const avail = b.map((v,i)=> v?null:i).filter(v=>v!==null);
+    if(avail.length===0) return null;
+    let bestScore = -Infinity; let bestMove = null;
+    for(const idx of avail){
+      const nb = b.slice(); nb[idx] = playerToMove;
+      const score = minimax(nb, depthLimit-1, false, playerToMove, -Infinity, Infinity);
+      if(score > bestScore){ bestScore = score; bestMove = idx; }
+    }
+    return bestMove;
+  }
+  
+  function minimax(b, depth, isMax, aiPlayer, alpha, beta){
+    const r = checkWinner(b);
+    if(r){ 
+        // SIMPLIFIED SCORING: Use base 1000 score to prevent floating point/depth confusion
+        if(r.player==='draw') return 0; 
+        return (r.player===aiPlayer)?(1000):(-1000); 
+    }
+    if(depth<=0){ 
+        // Heuristic scoring for non-terminal nodes
+        let sc=0; const pref=[3,2,3,2,4,2,3,2,3]; 
+        for(let i=0;i<9;i++){ 
+            if(b[i]===aiPlayer) sc+=pref[i]; 
+            else if(b[i] && b[i]!==aiPlayer) sc-=pref[i]; 
+        } 
+        return sc; 
+    }
+    const avail = b.map((v,i)=> v?null:i).filter(v=>v!==null);
+    
+    if(isMax){ 
+        let maxEval=-Infinity; 
+        for(const i of avail){ 
+            const nb=b.slice(); nb[i]=aiPlayer; 
+            const ev=minimax(nb, depth-1, false, aiPlayer, alpha, beta); 
+            maxEval=Math.max(maxEval, ev); 
+            alpha=Math.max(alpha, ev); 
+            if(beta<=alpha) break; 
+        } 
+        return maxEval; 
+    }
+    else{ 
+        let minEval=Infinity; 
+        const opp=(aiPlayer===AI)?PLAYER:AI; 
+        for(const i of avail){ 
+            const nb=b.slice(); nb[i]=opp; 
+            const ev=minimax(nb, depth-1, true, aiPlayer, alpha, beta); 
+            minEval=Math.min(minEval, ev); 
+            beta=Math.min(beta, ev); 
+            if(beta<=alpha) break; 
+        } 
+        return minEval; 
+    }
+  }
+
+  // --- DOWNLOAD FUNCTIONALITY ---
+  function downloadGame() {
+    const htmlContent = document.documentElement.outerHTML;
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'batman_tic_tac_toe.html'; 
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // --- Event Listeners ---
+  ui.newGameBtn.addEventListener('click', ()=> newRound());
+  
+  // Reset Button Modal Logic
+  ui.resetBtn.addEventListener('click', ()=> {
+    ui.modalOverlay.style.display = 'flex';
+  });
+  ui.modalCancel.addEventListener('click', () => {
+    ui.modalOverlay.style.display = 'none';
+  });
+  
+  // CRITICAL FIX: Aggressive Reset Logic
+  ui.modalConfirm.addEventListener('click', () => {
+      // 1. **AGRESSIVE FIX:** Completely obliterate the old key from storage.
+      localStorage.removeItem(SCORES_KEY); 
+      
+      // 2. Reset state scores to zero
+      state.scores = {wins:0, losses:0, draws:0, stars:0, streak:0};
+      // 3. Save the clean, zeroed scores to LocalStorage immediately
+      saveScores(); 
+      // 4. Update the UI to reflect the reset
+      updateScoreUI();
+      // 5. Hide the modal
+      ui.modalOverlay.style.display = 'none';
+      // 6. Start a clean new round
+      newRound();
+  });
+  // End Reset Button Modal Logic
+
+  ui.vsAiBtn.addEventListener('click', ()=> { state.mode='ai'; ui.vsAiBtn.classList.add('active'); ui.vsPlayerBtn.classList.remove('active'); newRound(); });
+  ui.vsPlayerBtn.addEventListener('click', ()=> { state.mode='local'; ui.vsPlayerBtn.classList.add('active'); ui.vsAiBtn.classList.remove('active'); newRound(); });
+  
+  // Difficulty Button Listeners
+  ui.difficultyBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const newDiff = e.target.dataset.difficulty;
+        if (newDiff === state.difficulty) return;
+        
+        state.difficulty = newDiff;
+        localStorage.setItem(DIFF_KEY, newDiff);
+
+        ui.difficultyBtns.forEach(b => {
+            const isActive = b.dataset.difficulty === newDiff;
+            b.classList.toggle('active', isActive);
+            b.classList.toggle('secondary', !isActive);
+        });
+        
+        newRound();
+        updateTurnUI(`AI set to ${newDiff.charAt(0).toUpperCase() + newDiff.slice(1)}.`);
+    });
+  });
+
+  ui.undoBtn.addEventListener('click', ()=> {
+    if(state.moveHistory.length===0 || state.isGameOver) return;
+    // Undo 2 moves if it was AI's turn next, otherwise 1 move
+    const movesToUndo = (state.mode === 'ai' && state.currentPlayer === PLAYER && state.moveHistory.length > 1) ? 2 : 1;
+    for (let i=0; i < movesToUndo; i++) {
+        const last = state.moveHistory.pop();
+        if(last !== undefined) state.boardState[last] = '';
+    }
+    state.currentPlayer = PLAYER;
+    renderBoard();
+    updateTurnUI();
+  });
+  
+  ui.flipBtn.addEventListener('click', ()=> { ui.board.style.transform = ui.board.style.transform? '' : 'rotateX(12deg) rotateY(-6deg) translateZ(6px)'; });
+  
+  ui.downloadBtn.addEventListener('click', downloadGame); 
+
+  document.addEventListener('keydown', (e) => { 
+      if(e.key>='1' && e.key<='9' && !state.isGameOver){ 
+          const idx = parseInt(e.key)-1; 
+          onCellClick(idx); 
+      } 
+  });
+
+
+  // --- Initialization ---
+  createBoard(); 
+  loadScores(); 
+  loadDifficulty();
+  renderBoard(); 
+  updateTurnUI();
+});
+</script>
+
+
+</body></html>
